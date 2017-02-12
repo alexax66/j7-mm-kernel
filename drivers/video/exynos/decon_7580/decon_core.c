@@ -2039,6 +2039,7 @@ static int decon_prevent_size_mismatch
 		if (decon_line == dsim_line && decon_hoz == dsim_hoz)
 			goto wait_done;
 
+#ifdef CONFIG_DECON_EVENT_LOG
 		if (need_save) {
 			/* TODO: Save a err data */
 			info.w_in = decon_hoz;
@@ -2048,6 +2049,7 @@ static int decon_prevent_size_mismatch
 			DISP_SS_EVENT_SIZE_ERR_LOG(&decon->sd, &info);
 			need_save = false;
 		}
+#endif
 
 		udelay(delay_time);
 	}
